@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Calculator</title>
+  <style>
+    body {
+      font-family: Monospace, Sans-Serif;
+      margin: 40px;
+      text-align: center;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      width: 100%;
+      font-size: 16px;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Basic Girl Budget</h2>
+    <label for="income">Income Pleaseeee:</label>
+    <input type="number" id="income" placeholder="Enter amount" />
+    <button onclick="calculateBudget()">Calculate My Budget</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function calculateBudget() {
+      // Get user input for income
+      const income = parseFloat(document.getElementById("income").value);
+
+      if (isNaN(income) || income <= 0) {
+        alert("Please enter a valid income.");
+        return;
+      }
+
+      // Calculate the 50/30/20 split
+      const needs = (income * 0.5).toFixed(2);
+      const wants = (income * 0.3).toFixed(2);
+      const savings = (income * 0.2).toFixed(2);
+
+      // Display the results in euros (€)
+      document.getElementById("result").innerHTML = `
+        <p><strong> Needs (50%):</strong> €${needs}</p>
+        <p><strong> Wants (30%):</strong> €${wants}</p>
+        <p><strong>20% for Savings (20%):</strong> €${savings}</p>
+      `;
+    }
+  </script>
+
+</body>
+</html>
